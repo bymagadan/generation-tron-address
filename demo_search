@@ -1,0 +1,14 @@
+from tronpy import Tron
+from tronpy.keys import PrivateKey
+
+client = Tron()
+desired_suffix = "7777"
+
+while True:
+    priv_key = PrivateKey.random()
+    addr = priv_key.public_key.to_base58check_address()
+
+    if addr.endswith(desired_suffix):
+        print(f"адрес найден: {addr}")
+        print(f"приватный ключ: {priv_key.hex()}")
+        break
